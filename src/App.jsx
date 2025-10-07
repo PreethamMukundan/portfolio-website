@@ -12,7 +12,7 @@ import Education from './pages/Education'
 export default function App(){
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.DEV ? '/' : '/portfolio-website'}>
       <div className="min-h-screen" style={{background: 'var(--bg)'}}>
         <Navbar />
         <main className="pt-20 pb-8">
