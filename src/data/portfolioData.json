@@ -1,0 +1,176 @@
+{
+  "about": {
+    "name": "Preetham Mukundan",
+    "role": "Game Developer",
+    "bio": "Award-winning game developer with 10 years of experience in Unreal Engine and 2 years of industry experience. Proficient in gameplay systems, AI development, and network programming. Recognized for excellence in programming and game development at Vancouver Film School.",
+    "email": "rpm869@gmail.com",
+    "phone": "+1 672 272 8355",
+    "linkedin": "https://www.linkedin.com/in/your-linkedin",
+    "github": "https://github.com/your-github",
+    "resume": "/assets/resume.pdf",
+    "image": "https://placehold.co/400x400?text=Profile"
+  },
+  "projects": [
+    {
+      "id": "spraynpray",
+      "title": "Spray N Pray",
+      "shortDescription": "Award-winning game developed in Unreal Engine 5 featuring advanced AI systems and custom EQS implementations.",
+      "thumbnail": "/assets/images/spray-thumb.jpg",
+      "mechanics": [
+        {
+          "id": "ai-systems",
+          "title": "Advanced AI Systems",
+          "description": "Implemented custom EQS Generators and Tests for various enemy types, with designer-configurable variables for diverse AI behaviors. Created sophisticated Behavior Trees, Decorators, and Tasks for multiple enemy types.",
+          "media": [
+            "/assets/images/projectile.jpg"
+          ]
+        },
+        {
+          "id": "custom-movement",
+          "title": "Custom Movement System",
+          "description": "Developed a specialized movement and pathfinding system for flying enemies, enhancing gameplay dynamics and challenge.",
+          "media": [
+            "/assets/videos/auto-fire.mp4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zerolock",
+      "title": "Zerolock",
+      "shortDescription": "Networked movement-based game in Unreal Engine 5 with advanced mobility mechanics",
+      "mechanics": [
+        {
+          "id": "movement-system",
+          "title": "Advanced Movement System",
+          "description": "Fully networked movement system featuring sprint, crouch, slide, wall jump, and zipline mechanics for fluid traversal.",
+          "media": []
+        },
+        {
+          "id": "ability-system",
+          "title": "Gameplay Ability System",
+          "description": "Implemented networked abilities using the Gameplay Ability System plugin for synchronized player actions across the network.",
+          "media": []
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": "spray_download",
+      "title": "Spray N Pray (Build)",
+      "description": "Playable build of Spray N Pray.",
+      "image": "https://placehold.co/600x400?text=Game+Screenshot",
+      "download": ""
+    }
+  ]
+  ,
+  "experience": [
+    {
+      "company": "Gamitronics",
+      "role": "Gameplay Programmer",
+      "dateRange": "JUN 2022 - OCT 2023",
+      "description": "Developed a sophisticated Construction Tool enabling players to place, rotate, scale, and modify assets with material changes and light source management. Implemented an Azure-powered speech-to-text system for interactive user responses."
+    },
+    {
+      "company": "FREAK X APPS",
+      "role": "Game Development Intern",
+      "dateRange": "SEP 2021 - FEB 2022",
+      "description": "Prototyped and implemented game mechanisms, optimized code for performance and space efficiency, and conducted thorough testing and debugging of existing game code."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Vancouver Film School",
+      "degree": "Programming For Web, Mobile & Games",
+      "dateRange": "JAN 2024 - DEC 2024",
+      "description": "Awarded best programmer and best final project (Spray N Pray). Developed multiple console games and worked on team projects including a movement-based FPS game."
+    },
+    {
+      "institution": "VIT University",
+      "degree": "Master of Technology in Software Engineering",
+      "dateRange": "JUL 2017 - FEB 2022",
+      "description": "Mastered multiple programming languages while developing real-world websites, AI models, and applications in team environments."
+    },
+    {
+      "institution": "BCIT",
+      "degree": "Advanced Diploma in Business Management",
+      "dateRange": "JAN 2025 - AUG 2025",
+      "description": "Focused on business management with hands-on projects and created business and marketing plans in diverse team settings."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Game Engines",
+      "items": [
+        {
+          "name": "Unreal Engine 4/5 (10 years)",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg"
+        },
+        {
+          "name": "Unity",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"
+        },
+        {
+          "name": "Construct 3",
+          "icon": "https://www.construct.net/images/v1016/r/global/construct-3-logo.png"
+        }
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "items": [
+        {
+          "name": "C++",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+        },
+        {
+          "name": "Java",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+        }
+      ]
+    },
+    {
+      "category": "Game Systems",
+      "items": [
+        {
+          "name": "EQS (Enemy AI)",
+          "icon": "https://img.icons8.com/color/48/artificial-intelligence.png"
+        },
+        {
+          "name": "Gameplay Ability System",
+          "icon": "https://img.icons8.com/color/48/game-controller.png"
+        },
+        {
+          "name": "Network Programming",
+          "icon": "https://img.icons8.com/color/48/network.png"
+        },
+        {
+          "name": "Steam Subsystem",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/steam/steam-original.svg"
+        }
+      ]
+    },
+    {
+      "category": "Specializations",
+      "items": [
+        {
+          "name": "Gameplay Programming",
+          "icon": "https://img.icons8.com/color/48/source-code.png"
+        },
+        {
+          "name": "AI Systems",
+          "icon": "https://img.icons8.com/color/48/brain.png"
+        },
+        {
+          "name": "Network Programming",
+          "icon": "https://img.icons8.com/color/48/network.png"
+        },
+        {
+          "name": "Movement Systems",
+          "icon": "https://img.icons8.com/color/48/running.png"
+        }
+      ]
+    }
+  ]
+}
