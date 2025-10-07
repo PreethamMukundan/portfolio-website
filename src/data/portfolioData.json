@@ -8,21 +8,21 @@
     "linkedin": "https://www.linkedin.com/in/your-linkedin",
     "github": "https://github.com/your-github",
     "resume": "/assets/resume.pdf",
-    "image": "https://placehold.co/400x400?text=Profile"
+    "image": "/assets/placeholders/profile-placeholder.svg"
   },
   "projects": [
     {
       "id": "spraynpray",
       "title": "Spray N Pray",
       "shortDescription": "Award-winning game developed in Unreal Engine 5 featuring advanced AI systems and custom EQS implementations.",
-      "thumbnail": "/assets/images/spray-thumb.jpg",
+      "thumbnail": "/assets/placeholders/game-placeholder.svg",
       "mechanics": [
         {
           "id": "ai-systems",
           "title": "Advanced AI Systems",
           "description": "Implemented custom EQS Generators and Tests for various enemy types, with designer-configurable variables for diverse AI behaviors. Created sophisticated Behavior Trees, Decorators, and Tasks for multiple enemy types.",
           "media": [
-            "/assets/images/projectile.jpg"
+            "/assets/placeholders/game-placeholder.svg"
           ]
         },
         {
@@ -30,7 +30,7 @@
           "title": "Custom Movement System",
           "description": "Developed a specialized movement and pathfinding system for flying enemies, enhancing gameplay dynamics and challenge.",
           "media": [
-            "/assets/videos/auto-fire.mp4"
+            "/assets/placeholders/game-placeholder.svg"
           ]
         }
       ]
@@ -39,18 +39,23 @@
       "id": "zerolock",
       "title": "Zerolock",
       "shortDescription": "Networked movement-based game in Unreal Engine 5 with advanced mobility mechanics",
+      "thumbnail": "/assets/placeholders/game-placeholder.svg",
       "mechanics": [
         {
           "id": "movement-system",
           "title": "Advanced Movement System",
           "description": "Fully networked movement system featuring sprint, crouch, slide, wall jump, and zipline mechanics for fluid traversal.",
-          "media": []
+          "media": [
+            "/assets/placeholders/game-placeholder.svg"
+          ]
         },
         {
           "id": "ability-system",
           "title": "Gameplay Ability System",
           "description": "Implemented networked abilities using the Gameplay Ability System plugin for synchronized player actions across the network.",
-          "media": []
+          "media": [
+            "/assets/placeholders/game-placeholder.svg"
+          ]
         }
       ]
     }
@@ -60,7 +65,7 @@
       "id": "spray_download",
       "title": "Spray N Pray (Build)",
       "description": "Playable build of Spray N Pray.",
-      "image": "https://placehold.co/600x400?text=Game+Screenshot",
+      "image": "/assets/placeholders/game-placeholder.svg",
       "download": ""
     }
   ]
