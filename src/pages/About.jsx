@@ -2,6 +2,7 @@ import React from 'react'
 import data from '../data/portfolioData.json'
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { getAssetPath } from '../utils/assetPath'
 
 export default function About() {
   const { about } = data
@@ -49,7 +50,7 @@ export default function About() {
         transition={{ type: "spring", stiffness: 300 }}
       >
         <motion.img 
-          src={about.image} 
+          src={getAssetPath(about.image)} 
           alt={about.name} 
           className="profile-pic rounded-full border-4 border-violet-500/30 shadow-lg"
           variants={imageVariants}
@@ -126,7 +127,7 @@ export default function About() {
               variants={itemVariants}
             >
               <motion.a 
-                href={about.resume} 
+                href={getAssetPath(about.resume)} 
                 className="px-4 py-2 bg-violet-600 text-white rounded-lg shadow-lg hover:bg-violet-700 transition-colors inline-flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

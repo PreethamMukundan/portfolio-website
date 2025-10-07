@@ -3,6 +3,7 @@ import data from '../data/portfolioData.json'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { getAssetPath } from '../utils/assetPath'
 
 export default function Home() {
   const { about, projects } = data
@@ -88,7 +89,7 @@ export default function Home() {
               variants={itemVariants}
             >
               <motion.a 
-                href={about.resume} 
+                href={getAssetPath(about.resume)} 
                 className="btn btn-primary inline-flex items-center justify-center" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -114,7 +115,7 @@ export default function Home() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.img 
-              src={about.image} 
+              src={getAssetPath(about.image)} 
               alt={about.name} 
               className="w-full rounded-xl shadow-2xl"
               initial={{ scale: 0.8, opacity: 0 }}
@@ -168,7 +169,7 @@ export default function Home() {
                 >
                   <div className="aspect-video overflow-hidden">
                     <motion.img 
-                      src={item.thumbnail} 
+                      src={getAssetPath(item.thumbnail)} 
                       alt={item.title}
                       className="w-full h-full object-cover"
                       whileHover={{ scale: 1.1 }}
