@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <header 
       className="fixed left-0 right-0 top-0 z-30 backdrop-blur-sm" 
@@ -22,9 +31,9 @@ export default function Navbar() {
         borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.03)'}`,
         transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
       }}>
-      <div className={`nav px-32 ${scrolled ? 'scrolled' : ''}`}>
+      <div className={`nav px-4 md:px-8 lg:px-32 ${scrolled ? 'scrolled' : ''}`}>
         <div className="flex items-center gap-3">
-          <Link to="/" className="flex items-center gap-3 no-underline">
+          <Link to="/" className="flex items-center gap-3 no-underline" onClick={closeMobileMenu}>
             <div style={{width:36,height:36,borderRadius:8,background:'linear-gradient(90deg,var(--accent),var(--accent-2))'}} />
             <div className="flex flex-col leading-none">
               <div className="text-xl font-black font-poppins tracking-wider bg-gradient-to-r from-violet-200 to-violet-400 bg-clip-text text-transparent">PREETHAM</div>
@@ -32,11 +41,32 @@ export default function Navbar() {
             </div>
           </Link>
         </div>
-        <nav className="flex items-center">
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center">
           <Link to="/projects" className="text-sm ml-4">Projects</Link>
           <Link to="/experience" className="text-sm ml-4">Experience</Link>
           <Link to="/education" className="text-sm ml-4">Education</Link>
           <Link to="/about" className="text-sm ml-4 mr-16">About</Link>
+        </nav>
+
+        {/* Mobile Hamburger Button */}
+        <button 
+          className={`hamburger md:hidden ${mobileMenuOpen ? 'open' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Mobile Navigation */}
+        <nav className={`nav-links md:hidden ${mobileMenuOpen ? 'open' : ''}`}>
+          <Link to="/projects" className="text-sm" onClick={closeMobileMenu}>Projects</Link>
+          <Link to="/experience" className="text-sm" onClick={closeMobileMenu}>Experience</Link>
+          <Link to="/education" className="text-sm" onClick={closeMobileMenu}>Education</Link>
+          <Link to="/about" className="text-sm" onClick={closeMobileMenu}>About</Link>
         </nav>
       </div>
     </header>

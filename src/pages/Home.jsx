@@ -109,8 +109,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div 
-            style={{width:400}} 
-            className="card p-6"
+            className="card p-6 w-full max-w-sm md:w-96" 
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -150,7 +149,7 @@ export default function Home() {
           </motion.h2>
           <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -224,7 +223,7 @@ export default function Home() {
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.2 }}
           variants={scrollVariants}
-          className="flex flex-col sm:flex-row gap-6 justify-center"
+          className="flex flex-col md:flex-row gap-6 justify-center"
         >
           <Link to="/experience">
             <motion.div
@@ -357,9 +356,9 @@ export default function Home() {
               >
                 <span className="flex items-center gap-2">
                   <FaEnvelope className="text-lg" />
-                  {about.email}
+                  <span className="break-all">{about.email}</span>
                 </span>
-                <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-accent-2"></span>
+                <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-accent-2"></span>
                 <span>{about.phone}</span>
               </motion.div>
               <motion.div 

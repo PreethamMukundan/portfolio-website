@@ -32,8 +32,8 @@ export default function Education() {
         transition={{ duration: 0.5 }}
         className="mb-12 text-center"
       >
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Education</h1>
-        <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Education</h1>
+        <div className="w-full max-w-xs h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
         <p className="text-muted text-lg">My academic background and qualifications</p>
       </motion.div>
 

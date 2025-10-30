@@ -34,10 +34,10 @@ export default function ProjectDetail() {
           </div>
           <div className="card p-6">
             {/* Title */}
-            <h3 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">
               {mechanic.title}
             </h3>
-            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
+            <div className="w-full max-w-xs h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
             
             {/* Video and Description Side by Side */}
             <div className="flex flex-col lg:flex-row lg:gap-8 mb-6">
@@ -52,7 +52,7 @@ export default function ProjectDetail() {
                 </div>
               )}
               <div className="flex-1">
-                <p className="text-lg whitespace-pre-line">{mechanic.description}</p>
+                <p className="text-base md:text-lg whitespace-pre-line">{mechanic.description}</p>
               </div>
             </div>
             
@@ -91,8 +91,8 @@ export default function ProjectDetail() {
           </div>
           <div className="card p-6 mb-4">
             {/* Centered Title with Purple Gradient */}
-            <h2 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">{project.title}</h2>
-            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">{project.title}</h2>
+            <div className="w-full max-w-xs h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
             
             {/* Video and Description Side by Side */}
             <div className="flex flex-col lg:flex-row lg:gap-8 lg:items-start">
@@ -107,15 +107,15 @@ export default function ProjectDetail() {
                 </div>
               )}
               <div className="flex-1 lg:min-h-[20rem] flex items-center">
-                <p className="text-lg leading-relaxed">{project.shortDescription}</p>
+                <p className="text-base md:text-lg leading-relaxed">{project.shortDescription}</p>
               </div>
             </div>
           </div>
 
           <div className="card p-6">
-            <h3 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">Project Mechanics</h3>
-            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">Project Mechanics</h3>
+            <div className="w-full max-w-xs h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {project.mechanics.map(m=>(
                 <Link 
                   key={m.id} 
