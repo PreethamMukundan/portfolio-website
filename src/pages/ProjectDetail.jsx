@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import data from '../data/portfolioData.json'
 import CodeBlock from '../components/CodeBlock'
@@ -7,6 +7,11 @@ import VideoPreview from '../components/VideoPreview'
 
 export default function ProjectDetail() {
   const { projectId, mechanicId } = useParams()
+  
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [projectId, mechanicId])
   const project = data.projects.find(p=>p.id===projectId)
   if(!project) return <div className="container">Project not found</div>
   const mechanic = project.mechanics.find(m=>m.id===mechanicId)
