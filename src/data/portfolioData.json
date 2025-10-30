@@ -21,9 +21,9 @@
         {
           "id": "ai-systems",
           "title": "Advanced AI Systems",
-          "description": "Implemented custom EQS Generators and Tests for various enemy types, with designer-configurable variables for diverse AI behaviors. Created sophisticated Behavior Trees, Decorators, and Tasks for multiple enemy types.",
+          "description": "On Spray N Pray, I programmed an AI system featuring five unique enemy classes, each built to support varied combat scenarios and encourage strategic player movement.\n\nEnemy Types\n\nGrunt: Slow melee unit that closes distance and performs a heavy attack with long recovery.\n\nSoldier: Ranged enemy that predicts player velocity for more accurate projectile attacks; swaps to melee up close.\n\nTank: Durable frontline. Uses lunge attacks to rapidly close distance and applies constant offensive pressure.\n\nFlyer: Aerial enemy with ranged attacks, adding verticality to gameplay.\n\nBomber: Charges the player and detonates on contact, disrupting positioning.\n\nTechnical Breakdown\n\nTo implement these behaviors, I:\n\nBuilt EQS queries to drive enemy positioning and attack distance logic.\n\nCreated a base enemy character + AI controller, which defines foundational behaviors including:\nDeath handling\nStun state machine\n\nDeveloped individual behavior trees tailored to each enemy class to define how they evaluate threats, reposition, and select attacks.\n\nThis setup provided a scalable and reusable foundation, allowing each enemy type to behave distinctly while sharing core functionality.\n\nUltimately, watching players instantly understand and react differently to each enemy type was a highlight of the development process—and one of the most fun parts of the project to work on.",
           "media": [
-            "/assets/videos/ai-systems-demo.mp4"
+            "/assets/videos/SprayNPray/enemyBehaviour.mp4"
           ]
         },
         {
@@ -32,6 +32,14 @@
           "description": "While working on enemy AI in Spray N Pray, I hit a limitation with Unreal's EQS: it only generates points on the NavMesh — great for ground AI, but not for flying characters. So I created a custom 3D EQS generator to solve the problem.\n\n🔧 What I built:\n\nA cube-shaped EQS generator that spawns points in 3D space around the flying enemy\n\nPoints are scored by distance to the player (closer = better)\n\nPoints are filtered out if:\n\nThey don't have a clear line of sight\n\nThey're too close to or overlapping with obstacles\n\nThe flying enemy moves to the best-scoring point\n\nThis process loops until it's close enough to the player\n\nThe core logic was implemented in C++, and the behavior is managed using Blueprint Behavior Trees — a flexible and powerful combo.",
           "media": [
             "/assets/videos/SprayNPray/FlyingEnemyPathFinding.mp4"
+          ]
+        },
+        {
+          "id": "spawn-system",
+          "title": "Spawn System",
+          "description": "I implemented a robust spawning and wave-management system that controlled how enemies entered the battlefield while supporting designer customization and playstyle variability.\n\nCore Functionality\nDynamic Spawning Prototype\n\nSubsystem triggered spawns based on an input enemy list\n\nEnemy types used EQS queries to find ideal spawn locations\n\nAllowed quick iteration but produced overly random pacing\n\nHand-Placed Spawn System\n\nTo ensure curated encounters, we transitioned to designer-placed spawn points:\n\nGuaranteed consistent combat flow\n\nAllowed specific control of pressure & movement\n\nMade encounters easier to tune\n\nThis eliminated randomness and encouraged intentional room-by-room design.\n\nWave Logic Evolution\n\nNext wave spawns when all enemies are defeated\n\nAdded a variable to define the minimum number of enemies remaining before triggering the next wave\n→ Allowed smarter pacing during fast-kill scenarios\n\nIf a wave has a mini-boss, the next wave will only begin after it dies, regardless of other enemies\n→ Supports set-piece encounters\n\nDifficulty Scaling\n\nTo support replayability and challenge levels, I extended the system with difficulty-driven spawning:\n\nHigher difficulties (Hard / Insane) pulled from different enemy spawn lists\n\nIncreased total enemy count per wave\n\nAdjusted wave makeup to add tougher or additional units\n\nThis allowed difficulty to scale without requiring designers to modify level data.\n\nPolish\n\nAdded Niagara particle VFX on enemy spawn to improve visual clarity & anticipation\n\nResult\n\nThis system empowered designers to craft intentional combat scenarios, supported scalable difficulty, and maintained modularity through data-driven enemy lists. The end result was an encounter system that felt challenging, dynamic, and adaptable.",
+          "media": [
+            "/assets/videos/SprayNPray/Spawnsystem.mp4"
           ]
         }
       ]
