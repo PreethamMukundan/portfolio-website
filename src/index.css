@@ -119,7 +119,7 @@ a { color: var(--accent); }
   box-shadow: 0 8px 30px rgba(124,58,237,0.1);
 }
 
-.profile-pic { width:140px; height:140px; border-radius:9999px; object-fit:cover; box-shadow: 0 12px 40px rgba(2,6,23,0.6); border: 2px solid rgba(255,255,255,0.04); }
+.profile-pic { width:200px; height:200px; border-radius:9999px; object-fit:cover; box-shadow: 0 12px 40px rgba(2,6,23,0.6); border: 2px solid rgba(255,255,255,0.04); }
 
 .project-grid { 
   display: grid; 

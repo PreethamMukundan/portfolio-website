@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Test</title>
+</head>
+<body>
+    <h2>Video Autoplay Test</h2>
+    <p>This will help test if the video functionality works once we have a proper video file.</p>
+    
+    <!-- Test with a sample video URL -->
+    <video 
+        controls 
+        autoplay 
+        muted 
+        loop 
+        playsInline
+        width="800" 
+        height="450"
+        style="border: 1px solid #ccc;"
+    >
+        <source src="./public/assets/videos/auto-fire.mp4" type="video/mp4">
+        <p>Your browser doesn't support HTML video. Here is a <a href="./public/assets/videos/auto-fire.mp4">link to the video</a> instead.</p>
+    </video>
+    
+    <p><strong>Instructions:</strong></p>
+    <ol>
+        <li>Place your video file in the <code>public/assets/videos/</code> folder</li>
+        <li>Replace the empty <code>auto-fire.mp4</code> or add a new video file</li>
+        <li>Update the src attribute above to point to your video</li>
+    </ol>
+</body>
+</html>

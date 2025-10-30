@@ -5,7 +5,8 @@ import { getAssetPath } from '../utils/assetPath'
 export default function Games() {
   return (
     <div className="container">
-      <h2 className="text-2xl font-semibold mb-4">Finished Games</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Finished Games</h2>
+      <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
       <div className="project-grid">
         {data.games.map(g=>(
           <div key={g.id} className="project-card card">

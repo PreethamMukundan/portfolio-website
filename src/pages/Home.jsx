@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
 import { getAssetPath } from '../utils/assetPath'
+import VideoPreview from '../components/VideoPreview'
 
 export default function Home() {
   const { about, projects } = data
@@ -147,6 +148,7 @@ export default function Home() {
           >
             Game Mechanics
           </motion.h2>
+          <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
           <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
@@ -154,7 +156,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {projects.flatMap(p => p.mechanics.map(m => ({...m, projectId: p.id, projectTitle: p.title, thumbnail: m.media && m.media[0] ? m.media[0] : p.thumbnail}))).map((item, index) => (
+            {projects.flatMap(p => p.mechanics.map(m => ({...m, projectId: p.id, projectTitle: p.title, videoSrc: m.media && m.media[0] ? m.media[0] : null}))).map((item, index) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
@@ -167,14 +169,18 @@ export default function Home() {
                   to={`/projects/${item.projectId}/${item.id}`} 
                   className="block group overflow-hidden rounded-xl bg-opacity-5 bg-white hover:bg-opacity-10 transition-all duration-300"
                 >
-                  <div className="aspect-video overflow-hidden">
-                    <motion.img 
-                      src={getAssetPath(item.thumbnail)} 
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.4 }}
-                    />
+                  <div className="aspect-video overflow-hidden relative">
+                    {item.videoSrc ? (
+                      <VideoPreview 
+                        src={item.videoSrc} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <span className="text-gray-400">No video available</span>
+                      </div>
+                    )}
                   </div>
                   <div className="p-4">
                     <motion.div 
@@ -265,6 +271,7 @@ export default function Home() {
           >
             Skills
           </motion.h2>
+          <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
           <motion.div 
             className="grid grid-cols-1 gap-6"
             variants={containerVariants}
@@ -319,6 +326,7 @@ export default function Home() {
           >
             Contact
           </motion.h2>
+          <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
           <motion.div 
             className="card p-8 flex flex-col items-center"
             whileHover={{ y: -5 }}

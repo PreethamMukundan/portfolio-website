@@ -7,7 +7,15 @@ export default function VideoPlayer({ fileUrl, url }) {
   return (
     <div>
       {fileUrl ? (
-        <video controls src={getAssetPath(fileUrl)} className="w-full max-h-[420px] rounded"/>
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          src={getAssetPath(fileUrl)} 
+          className="w-full max-h-[420px] rounded"
+          style={{ pointerEvents: 'none' }}
+        />
       ) : embed ? (
         <div className="w-full aspect-video rounded overflow-hidden"><iframe title="video" className="w-full h-full" src={embed} allowFullScreen/></div>
       ) : url ? (

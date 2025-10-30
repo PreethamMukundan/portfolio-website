@@ -7,7 +7,8 @@ export default function Projects() {
   const { projects } = data
   return (
     <div className="container">
-      <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Projects</h2>
+      <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
       <div className="project-grid">
         {projects.map(p => (
           <Link key={p.id} to={`/projects/${p.id}`} className="project-card card block hover:bg-gray-800 transition-colors">

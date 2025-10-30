@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import data from '../data/portfolioData.json'
 import CodeBlock from '../components/CodeBlock'
 import VideoPlayer from '../components/VideoPlayer'
+import VideoPreview from '../components/VideoPreview'
 
 export default function ProjectDetail() {
   const { projectId, mechanicId } = useParams()
@@ -27,18 +28,42 @@ export default function ProjectDetail() {
             </Link>
           </div>
           <div className="card p-6">
-            <h3 className="text-2xl font-semibold mb-4">{mechanic.title}</h3>
-            <p className="text-lg mb-6">{mechanic.description}</p>
-            <div className="space-y-8">
-              {mechanic.media?.map((m,i)=>(
-                <div key={i} className="rounded-lg overflow-hidden shadow-lg">
-                  <VideoPlayer 
-                    fileUrl={m.endsWith('.mp4')?m:null} 
-                    url={m.endsWith('.mp4')?null:m} 
-                  />
+            {/* Title */}
+            <h3 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">
+              {mechanic.title}
+            </h3>
+            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
+            
+            {/* Video and Description Side by Side */}
+            <div className="flex flex-col lg:flex-row lg:gap-8 mb-6">
+              {mechanic.media && mechanic.media.length > 0 && (
+                <div className="flex-shrink-0 w-full lg:w-[28rem] mb-6 lg:mb-0">
+                  <div className="rounded-lg overflow-hidden shadow-lg">
+                    <VideoPlayer 
+                      fileUrl={mechanic.media[0].endsWith('.mp4')?mechanic.media[0]:null} 
+                      url={mechanic.media[0].endsWith('.mp4')?null:mechanic.media[0]} 
+                    />
+                  </div>
                 </div>
-              ))}
+              )}
+              <div className="flex-1">
+                <p className="text-lg whitespace-pre-line">{mechanic.description}</p>
+              </div>
             </div>
+            
+            {/* Additional Media (if more than one) */}
+            {mechanic.media && mechanic.media.length > 1 && (
+              <div className="space-y-8">
+                {mechanic.media.slice(1).map((m,i)=>(
+                  <div key={i+1} className="rounded-lg overflow-hidden shadow-lg">
+                    <VideoPlayer 
+                      fileUrl={m.endsWith('.mp4')?m:null} 
+                      url={m.endsWith('.mp4')?null:m} 
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
             {mechanic.codeSnippets?.map((c,i)=>(
               <div key={i} className="mt-8">
                 <CodeBlock code={c.code} language={c.language} />
@@ -60,31 +85,51 @@ export default function ProjectDetail() {
             </Link>
           </div>
           <div className="card p-6 mb-4">
-            <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
-            <p className="text-lg mb-6">{project.shortDescription}</p>
+            {/* Centered Title with Purple Gradient */}
+            <h2 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">{project.title}</h2>
+            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
             
-            {/* Show the first media item (video/image) from mechanics if available */}
-            {project.mechanics[0]?.media && project.mechanics[0].media.length > 0 && (
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <VideoPlayer 
-                  fileUrl={project.mechanics[0].media[0].endsWith('.mp4') ? project.mechanics[0].media[0] : null}
-                  url={project.mechanics[0].media[0].endsWith('.mp4') ? null : project.mechanics[0].media[0]}
-                />
+            {/* Video and Description Side by Side */}
+            <div className="flex flex-col lg:flex-row lg:gap-8 lg:items-start">
+              {project.video && (
+                <div className="flex-shrink-0 w-full lg:w-[36rem] mb-6 lg:mb-0">
+                  <div className="rounded-lg overflow-hidden shadow-lg">
+                    <VideoPlayer 
+                      fileUrl={project.video.endsWith('.mp4') ? project.video : null}
+                      url={project.video.endsWith('.mp4') ? null : project.video}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className="flex-1 lg:min-h-[20rem] flex items-center">
+                <p className="text-lg leading-relaxed">{project.shortDescription}</p>
               </div>
-            )}
+            </div>
           </div>
 
           <div className="card p-6">
-            <h3 className="text-xl font-semibold mb-4">Project Mechanics</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h3 className="text-3xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-violet-200 to-violet-400">Project Mechanics</h3>
+            <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.mechanics.map(m=>(
                 <Link 
                   key={m.id} 
                   to={`/projects/${project.id}/${m.id}`} 
-                  className="card block p-6 hover:bg-gray-800 transition-colors group"
+                  className="card block overflow-hidden hover:bg-gray-800 transition-colors group"
                 >
-                  <h4 className="font-semibold text-lg mb-3 group-hover:text-accent transition-colors">{m.title}</h4>
-                  <p className="text-gray-400">{m.description.slice(0,140)}{m.description.length > 140 ? '...' : ''}</p>
+                  {m.media && m.media[0] && (
+                    <div className="aspect-video overflow-hidden">
+                      <VideoPreview 
+                        src={m.media[0]} 
+                        alt={m.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h4 className="font-semibold text-lg mb-3 group-hover:text-accent transition-colors">{m.title}</h4>
+                    <p className="text-gray-400">{m.description.slice(0,140)}{m.description.length > 140 ? '...' : ''}</p>
+                  </div>
                 </Link>
               ))}
             </div>

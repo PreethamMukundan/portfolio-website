@@ -5,32 +5,33 @@
     "bio": "Award-winning game developer with 10 years of experience in Unreal Engine and 2 years of industry experience. Proficient in gameplay systems, AI development, and network programming. Recognized for excellence in programming and game development at Vancouver Film School.",
     "email": "rpm869@gmail.com",
     "phone": "+1 672 272 8355",
-    "linkedin": "https://www.linkedin.com/in/your-linkedin",
-    "github": "https://github.com/your-github",
+    "linkedin": "https://www.linkedin.com/in/preetham-mukundan-012950255/",
+    "github": "https://github.com/PreethamMukundan",
     "resume": "/assets/resume.pdf",
-    "image": "/assets/placeholders/profile-placeholder.svg"
+    "image": "/assets/images/Profile/PP.jpg"
   },
   "projects": [
     {
       "id": "spraynpray",
       "title": "Spray N Pray",
-      "shortDescription": "Award-winning game developed in Unreal Engine 5 featuring advanced AI systems and custom EQS implementations.",
-      "thumbnail": "/assets/placeholders/game-placeholder.svg",
+      "shortDescription": "Spray N' Pray is a fast-paced boomer shooter where you play as Justinian, a priest armed with dual revolvers. Dash, run, and jump through a demon-infested cathedral, vanquishing hellspawn and fallen angels to earn your righteous place in heaven.",
+      "thumbnail": "/assets/images/SprayNPray/spray-thumb.png",
+      "video": "/assets/videos/SprayNPray/SprayNPrayTrailer.mp4",
       "mechanics": [
         {
           "id": "ai-systems",
           "title": "Advanced AI Systems",
           "description": "Implemented custom EQS Generators and Tests for various enemy types, with designer-configurable variables for diverse AI behaviors. Created sophisticated Behavior Trees, Decorators, and Tasks for multiple enemy types.",
           "media": [
-            "/assets/placeholders/game-placeholder.svg"
+            "/assets/videos/ai-systems-demo.mp4"
           ]
         },
         {
           "id": "custom-movement",
-          "title": "Custom Movement System",
-          "description": "Developed a specialized movement and pathfinding system for flying enemies, enhancing gameplay dynamics and challenge.",
+          "title": "Handling flying enemies in UE5",
+          "description": "While working on enemy AI in Spray N Pray, I hit a limitation with Unreal's EQS: it only generates points on the NavMesh — great for ground AI, but not for flying characters. So I created a custom 3D EQS generator to solve the problem.\n\n🔧 What I built:\n\nA cube-shaped EQS generator that spawns points in 3D space around the flying enemy\n\nPoints are scored by distance to the player (closer = better)\n\nPoints are filtered out if:\n\nThey don't have a clear line of sight\n\nThey're too close to or overlapping with obstacles\n\nThe flying enemy moves to the best-scoring point\n\nThis process loops until it's close enough to the player\n\nThe core logic was implemented in C++, and the behavior is managed using Blueprint Behavior Trees — a flexible and powerful combo.",
           "media": [
-            "/assets/placeholders/game-placeholder.svg"
+            "/assets/videos/SprayNPray/FlyingEnemyPathFinding.mp4"
           ]
         }
       ]
@@ -38,15 +39,16 @@
     {
       "id": "zerolock",
       "title": "Zerolock",
-      "shortDescription": "Networked movement-based game in Unreal Engine 5 with advanced mobility mechanics",
-      "thumbnail": "/assets/placeholders/game-placeholder.svg",
+      "shortDescription": "Zerolock is a hero-based, multiplayer third-person shooter inspired by Valve's Deadlock. The project is built in Unreal Engine with a strong focus on responsive online gameplay using the Gameplay Ability System (GAS) and Unreal's networking framework.",
+      "thumbnail": "/assets/images/ZeroLock/ZeroLockSlash.png",
+      "video": "/assets/videos/movement-system-demo.mp4",
       "mechanics": [
         {
           "id": "movement-system",
           "title": "Advanced Movement System",
-          "description": "Fully networked movement system featuring sprint, crouch, slide, wall jump, and zipline mechanics for fluid traversal.",
+          "description": "Recreating Advanced Player Movement from Deadlock in Unreal Engine 5 (Multiplayer Ready)\nInspired by the fluid and responsive movement mechanics in Deadlock by Valve, I undertook a personal project to replicate a similar system within Unreal Engine 5, implemented entirely in C++ with full multiplayer networking support.\nThe custom movement system includes dash, slide, mantle, wall bounce, and wall run.\n\nThis project allowed me to:\n🔧 Analyze and translate complex movement mechanics into Unreal's framework\n🔧 Implement efficient and responsive network replication for multiplayer gameplay\n🔧 Refine my understanding of character physics, animation blending, and gameplay responsiveness\n\nAll movement features were developed from the ground up to closely match the feel of modern AAA movement systems, while maintaining performance and consistency across networked sessions.",
           "media": [
-            "/assets/placeholders/game-placeholder.svg"
+            "/assets/videos/ZeroLock/ZeroLock_MovementV.mp4"
           ]
         },
         {
@@ -54,7 +56,7 @@
           "title": "Gameplay Ability System",
           "description": "Implemented networked abilities using the Gameplay Ability System plugin for synchronized player actions across the network.",
           "media": [
-            "/assets/placeholders/game-placeholder.svg"
+            "/assets/videos/ability-system-demo.mp4"
           ]
         }
       ]
@@ -65,7 +67,7 @@
       "id": "spray_download",
       "title": "Spray N Pray (Build)",
       "description": "Playable build of Spray N Pray.",
-      "image": "/assets/placeholders/game-placeholder.svg",
+      "image": "/assets/images/spray-thumb.jpg",
       "download": ""
     }
   ]

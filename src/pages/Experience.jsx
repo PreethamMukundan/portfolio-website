@@ -30,9 +30,10 @@ export default function Experience() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-12"
+        className="mb-12 text-center"
       >
-        <h1 className="text-3xl font-bold mb-4">Experience</h1>
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">Experience</h1>
+        <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
         <p className="text-muted text-lg">My professional journey and work experience</p>
       </motion.div>
 

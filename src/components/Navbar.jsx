@@ -34,7 +34,6 @@ export default function Navbar() {
         </div>
         <nav className="flex items-center">
           <Link to="/projects" className="text-sm ml-4">Projects</Link>
-          <Link to="/games" className="text-sm ml-4">Games</Link>
           <Link to="/experience" className="text-sm ml-4">Experience</Link>
           <Link to="/education" className="text-sm ml-4">Education</Link>
           <Link to="/about" className="text-sm ml-4 mr-16">About</Link>
