@@ -66,6 +66,28 @@
           "media": [
             "/assets/videos/ability-system-demo.mp4"
           ]
+        },
+        {
+          "id": "damage-calculation",
+          "title": "Damage Calculation",
+          "description": "🎮 Lately, I've been working on a Deadlock clone because I've been loving the game and wanted to see if I could recreate its **fast-paced combat** while diving deeper into **Unreal Engine** and the **Gameplay Ability System (GAS)**.\n\nThis week, I wrapped up the **damage calculations**—now damage is calculated **dynamically** using **Gameplay Attributes + Execution Calculations**. ⚡\n\nI've got setups for **Spirit, Melee, Healing**, and more, but here's the **Weapon Damage example**:\n\n### Attribute Setup\n\n[CODE_SNIPPET_0]\n\n### Generalized Gameplay Effects\n\nInstead of creating a new gameplay effect for every weapon, I made **helper functions** in my Ability System Component:\n\n- Apply weapon damage using **SetByCaller**\n- Send gameplay events to both **instigator and target**\n- Passive abilities and items listen and react automatically\n\n[CODE_SNIPPET_1]\n\n### Damage Calculation & Lifesteal\n\nUsing **GameplayEffectExecutionCalculation**, I calculate damage and lifesteal dynamically:\n\n[CODE_SNIPPET_2]\n\n### Demo Clip\n\nTwo-player multiplayer:\n1️⃣ Player A shoots Player B\n2️⃣ Adjust weapon stats\n3️⃣ Shoot again → **damage scales instantly** ✅\n\nThis approach keeps GAS **modular, dynamic, and easy to extend** with new weapons, passives, or effects.",
+          "codeSnippets": [
+            {
+              "language": "cpp",
+              "code": "UPROPERTY(BlueprintReadOnly, Category = \"Weapon Attribute Set\", ReplicatedUsing= OnRep_WeaponResistance)\nFGameplayAttributeData WeaponResistance;\nATTRIBUTE_ACCESSORS(UBaseCharAttributeSet, WeaponResistance)"
+            },
+            {
+              "language": "cpp",
+              "code": "FGameplayEffectSpecHandle SpecHandle = MakeOutgoingSpec(GE_WeaponClass, 1.f, Context);\nSpecHandle.Data->SetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(\"Zerolock.DamageCalc.Weapon\", false), DamageValue);\nApplyGameplayEffectSpecToTarget(*SpecHandle.Data.Get(), TargetASC);\n\nFGameplayEventData WeaponHitEventData;\nWeaponHitEventData.EventTag = FGameplayTag::RequestGameplayTag(\"Event.WeaponHit\", false);\nUAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetAvatarActor(), FGameplayTag::RequestGameplayTag(\"Event.WeaponHit\", false), WeaponHitEventData);"
+            },
+            {
+              "language": "cpp",
+              "code": "MitigatedDamage = ((Damage + FlatWeapon) * (1 + WeaponDamage / 100)) * (1 - (WeaponResistance - WeaponResistanceReduction) / 100);\n\nfloat HealAmount = MitigatedDamage * (WeaponLifeSteal / 100);\nmySourceASC->ApplyHeal(mySourceASC, HealAmount);\n\nOutExecutionOutput.AddOutputModifier(FGameplayModifierEvaluatedData(WeaponDamageStatics().DamageProperty, EGameplayModOp::Additive, MitigatedDamage));"
+            }
+          ],
+          "media": [
+            "/assets/videos/ZeroLock/DamageCalcvideo.mp4"
+          ]
         }
       ]
     }

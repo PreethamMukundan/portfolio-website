@@ -39,10 +39,10 @@ export default function ProjectDetail() {
             </h3>
             <div className="w-full max-w-xs h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-6 rounded-full"></div>
             
-            {/* Video and Description Side by Side */}
-            <div className="flex flex-col lg:flex-row lg:gap-8 mb-6">
+            {/* Video and Description - Full Width Layout */}
+            <div className="space-y-6">
               {mechanic.media && mechanic.media.length > 0 && (
-                <div className="flex-shrink-0 w-full lg:w-[28rem] mb-6 lg:mb-0">
+                <div className="w-full lg:w-80 lg:float-left lg:mr-8 mb-6">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <VideoPlayer 
                       fileUrl={mechanic.media[0].endsWith('.mp4')?mechanic.media[0]:null} 
@@ -51,10 +51,32 @@ export default function ProjectDetail() {
                   </div>
                 </div>
               )}
-              <div className="flex-1">
-                <p className="text-base md:text-lg whitespace-pre-line">{mechanic.description}</p>
+              <div className="overflow-hidden">
+                {mechanic.codeSnippets && mechanic.codeSnippets.length > 0 ? (
+                  <div className="space-y-4">
+                    {mechanic.description.split(/(\[CODE_SNIPPET_\d+\])/).map((part, idx) => {
+                      const match = part.match(/\[CODE_SNIPPET_(\d+)\]/)
+                      if (match) {
+                        const snippetIdx = parseInt(match[1])
+                        return (
+                          <div key={idx} className="mt-4 overflow-x-auto">
+                            <CodeBlock code={mechanic.codeSnippets[snippetIdx].code} language={mechanic.codeSnippets[snippetIdx].language} />
+                          </div>
+                        )
+                      }
+                      return (
+                        <p key={idx} className="text-base md:text-lg whitespace-pre-line break-words">{part}</p>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-base md:text-lg whitespace-pre-line break-words">{mechanic.description}</p>
+                )}
               </div>
             </div>
+            
+            {/* Clear float for additional media */}
+            <div className="clear-both"></div>
             
             {/* Additional Media (if more than one) */}
             {mechanic.media && mechanic.media.length > 1 && (
@@ -69,11 +91,6 @@ export default function ProjectDetail() {
                 ))}
               </div>
             )}
-            {mechanic.codeSnippets?.map((c,i)=>(
-              <div key={i} className="mt-8">
-                <CodeBlock code={c.code} language={c.language} />
-              </div>
-            ))}
           </div>
         </div>
       ) : (

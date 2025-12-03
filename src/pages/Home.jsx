@@ -155,7 +155,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {projects.flatMap(p => p.mechanics.map(m => ({...m, projectId: p.id, projectTitle: p.title, videoSrc: m.media && m.media[0] ? m.media[0] : null}))).map((item, index) => (
+            {projects.flatMap(p => p.mechanics.map(m => ({...m, projectId: p.id, projectTitle: p.title, videoSrc: m.media && m.media[0] ? m.media[0] : null}))).reverse().map((item, index) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
