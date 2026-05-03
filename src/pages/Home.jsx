@@ -145,6 +145,92 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
+            Featured Systems
+          </motion.h2>
+          <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {projects.flatMap(p => p.mechanics.filter(m => m.featured).map(m => ({...m, projectId: p.id, projectTitle: p.title, videoSrc: m.media && m.media[0] ? m.media[0] : null}))).map((item, index) => (
+              <motion.div
+                key={item.id}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { type: "spring", stiffness: 400 }
+                }}
+              >
+                <Link 
+                  to={`/projects/${item.projectId}/${item.id}`} 
+                  className="block group overflow-hidden rounded-xl bg-opacity-5 bg-white hover:bg-opacity-10 transition-all duration-300"
+                >
+                  <div className="aspect-video overflow-hidden relative">
+                    {item.videoSrc ? (
+                      <VideoPreview 
+                        src={item.videoSrc} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <span className="text-gray-400">No video available</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <motion.div 
+                      className="text-sm text-accent-2 mb-1"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {item.projectTitle}
+                    </motion.div>
+                    <motion.h3 
+                      className="font-semibold text-lg group-hover:text-accent-2 transition-colors"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      {item.title}
+                    </motion.h3>
+                    <motion.p 
+                      className="text-muted text-sm mt-2"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      {item.description.slice(0,80)}{item.description.length>80?'...':''}
+                    </motion.p>
+                    <motion.div 
+                      className="text-sm mt-3 text-accent"
+                      whileHover={{ x: 5 }}
+                    >
+                      View details →
+                    </motion.div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.05 }}
+          variants={scrollVariants}
+        >
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
             Game Mechanics
           </motion.h2>
           <div className="w-96 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mb-8 rounded-full"></div>
